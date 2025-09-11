@@ -5,8 +5,8 @@ date: 2025-09-03
 - [[normes du wifi|normes]]
 - [[architecture pour wifi|architecture]]
 - étude de couverture et zones d'émissions
-- besoins et [[sécurisation du wifi|sécurisation]]
-- diagnostics et dépannages
+- [[différents besoins wifi|besoins]] et [[sécurisation du wifi|sécurisation]]
+- [[diagnostics et dépannages en wifi|diagnostics et dépannages]]
 ___
 # TD 1
 2,4 ghz à l'extérieur car porte plus loin, mais aussi 5ghz ; on peut enlever le wifi 1 et 2 car les normes [^1] sont négociées au mieux selon les conditions par les appareils, ce qui permet qu'ils ne soient pas choisis par les clients
@@ -21,6 +21,24 @@ Le mieux serait les switchs car ça peut laisser un aggrandissement du réseau, 
 si sur les bords : antennes directionnelles
 dans la serre il y aura plus de bornes car humidité 
 il peut y avoir des problèmes si les arbres poussent ou tout autre condition du genre ; aussi des problèmes avec le fait que s'il y a beaucoup de gens au même endroit il peut ne plus y avoir de réseaux
+
+Je pense un ssid pour tag, un pour le maître de conférence, un pour les visiteurs, un pour employés
+
+wpa2
+
+si ça marche pas dans les 5ghz il faut regarder les logs
+
+limitation 1w en France pour une borne
+
+plus de personne : revenir pour refaire une étude de couverture pour installer d'autres bornes
+
+si des bornes ne marchent plus dans le parc phoenix, on peut regarder si la borne est up et si des clients sont connectés
+Ne pas mettre de mise à jour automatique sur les bornes et équipements wifi
+renseigner sur un logiciel qu'est-ce qui il y a en plus d'avant pour recalculer l'étude de couverture
+
+question 9 le problème est qu'il y a trop de mondes, donc on enlève le ssid pour faire capter les scannettes
+
+Pour la serre aussi on peut mettre un truc étanche pour contrer l'humidité
 
 ([[notes de contenu/but3/wifi]])
 
