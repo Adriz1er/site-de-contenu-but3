@@ -106,5 +106,93 @@ on peut passer des portails avec des recherches google
 ![[Pasted image 20250923092811.png]]
 ![[Pasted image 20250923092845.png]]
 
+désarmement avec code de l'alarme
+![[Pasted image 20250923100503.png]]
+![[Pasted image 20250923100557.png]]
+co : contact ouverture
+un détecteur volumétrique protège la centrale d'alarme
+![[Pasted image 20250923100755.png]]
+un groupe commun entre deux étages armés -> automatiquement un autre étage s'arme
+
+une alarme ne peut pas être reliée directement à la police
+
+radio peut être brouillée
+il peut y avoir des problèmes pour faire les tirages de câble car on doit être obligé de faire des saignées
+![[Pasted image 20250923101011.png]]
+![[Pasted image 20250923100926.png]]
+ce qui consomme c'est d'envoyer à la centrale
+![[Pasted image 20250923101126.png]]
+
+il y a des protections anti-arrachement pour les alarmes
+![[Pasted image 20250923101342.png]]
+
+protection par de la fumée il faut un certain budget
+
+RTC : analogique
+ont tous une prise RJ45
+![[Pasted image 20250923101519.png]]
+le courant téléphonique est fournie par Orange
+il existe des brouilleurs gsm
+
+
+sortie de clef veut dire qu'on est parti avec les clefs alarme désactivée
+
+il est nécessaire d'y avoir un onduleur derrière la box 
+on peut couper la fibre de le local technique sur la voie publique
+![[Pasted image 20250923102012.png]]
+![[Pasted image 20250923101905.png]]
+problème fiabilité microsoft azur par exemple
+
+on peut attaquer les stations de télésurveillance pour pas qu'on puisse appeler la police, il y a deux opérateurs de surveillance selon la loi
+![[Pasted image 20250923102407.png]]
+
+les caméras chinoises sont souvent moins chères, même si elles peuvent envoyer des images au gouvernement chinois peut-être ?
+
+![[Pasted image 20250923103230.png]]
+thermique : couteux et on peut juste identifier si c'est une forme humaine de plus la chaleur peut se refléter
+
+![[Pasted image 20250923103608.png]]
+![[Pasted image 20250923103633.png]]
+
+![[Pasted image 20250923103700.png]]
+
+![[Pasted image 20250923103712.png]]
+![[Pasted image 20250923103741.png]]
+
+![[Pasted image 20250923103727.png]]
+
+![[Pasted image 20250923103807.png]]
+![[Pasted image 20250923103820.png]]
+h265 : changement du calcul des zones et traitement parallèle par la machine
+![[Pasted image 20250923103849.png]]
+
+référence bitrate indique le min et le max de i frame
+![[Pasted image 20250923103957.png]]
+vbr augmente beaucoup son débit juste avant la limite d'activer l'infra-rouge qui lui prend moins de débits. conséquence sur les données à sauvegarder 30 jours, il faut avoir le stcokage notamment avec le  nombre de caméras, plus le fait que ces disques doivent être adaptés à la vidéos surveillance
+![[Pasted image 20250923104053.png]]
+
+![[Pasted image 20250923104434.png]]
+![[Pasted image 20250923104450.png]]
+
+![[Pasted image 20250923104645.png]]
+
+![[Pasted image 20250923104823.png]]
+![[Pasted image 20250923104800.png]]
+![[Pasted image 20250923104900.png]]
+![[Pasted image 20250923104925.png]]
+
+![[Pasted image 20250923104951.png]]
+![[Pasted image 20250923105025.png]]
+
+![[Pasted image 20250923105116.png]]
+![[Pasted image 20250923105130.png]]
+
+![[Pasted image 20250923105238.png]]
+![[Pasted image 20250923105259.png]]
+![[Pasted image 20250923105312.png]]
+
+![[Pasted image 20250923105337.png]]
+![[Pasted image 20250923105354.png]]
+![[Pasted image 20250923105405.png]]
 
 ([[la sécurité physique d'un batiment est une remise en question permanente]])
