@@ -18,4 +18,6 @@ micro-management : manager trop dirigiste
 
 quand on a un produit innovant il peut y avoir des opportunités comme le fait que le marketing peut être un plus grand point fort dans ces circonstances
 
+les acteurs peuvent être spécifiques à certains projets 
+
 ([[gestion de projet en semestre 5]])
