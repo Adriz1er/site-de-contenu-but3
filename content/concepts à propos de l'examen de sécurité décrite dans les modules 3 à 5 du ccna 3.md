@@ -1,5 +1,5 @@
 ---
-date: 2025-09-21
+date: 2025-09-24
 ---
 la raison qui pousse les cybercriminels à attaquer des réseaux est le gain financier
 
@@ -16,6 +16,7 @@ Les zombies sont des ordinateurs infectés. Les zombies sont utilisés pour dép
 Pour trouver un masque wildcard commun, on convertit les réseaux en binaire et là où ça diffère on met des 1
 
 Les listes de contrôle d’accès étendues filtrent généralement les adresses source et de destination IPv4 et les numéros de port TCP ou UDP. Un filtrage supplémentaire peut être fourni pour les types de protocoles.
+Les acls étendues sont les seules à pouvoir permettre une connexion dans plusieurs réseaux et pas tout l'extérieur en raison de son positionnement ; elles utilisent les paquets ack et rst pour savoir si une communication est déjà autorisée.
 
 Généralement une liste de contrôle d’accès standard est généralement placée aussi près que possible du réseau de destination car les expressions de contrôle d’accès dans une liste de contrôle d’accès standard n’incluent pas les informations sur le réseau de destination.
 
@@ -41,6 +42,11 @@ Il faut d'abord deny un sous réseau avec un numéro, ensuite autoriser son rés
 
 par défaut après avoir configuré des acl il y a un deny any à la fin des acl
 
+pour accéder à un serveur web d'après cisco il faut autoriser que le port 80, si c'est pour que un réseau ce serveur alors d'abord on autorise l'accès :
+access-list 103 permit tcp 192.168.10.0 0.0.0.255 host 172.17.80.1 eq 80
+et ensuite on bloque tout le monde l'accès par exemple de telnet :
+access-list 103 deny tcp 192.168.10.0 0.0.0.255 any eq 23
+
 configurer une ACL standard afin que seule l’adresse IP 192.168.15.23 puisse passer par le routeur, il faut ses deux commandes :
 Router1(config)# access-list *num acl* permit *ip hôte* 0.0.0.0
 Router1 (config)# access-list *num acl* permit host *ip hôte*
@@ -56,9 +62,21 @@ on fait aussi :
 on assemble ces deux trucs dans cette commande :
 - access-list 1 permit *réseau* *wildcard masque*
 
+S'il y a deux sous-réseaux il peut y avoir une acl qui fait l'addition de ses deux sous-réseaux si les deux sont à la suite par rapport aux différents sous-réseaux
+
 show access-list *mon acl*
 montre notamment dans le cas des permit le nombre de fois qu'ils ont été utilisés par règle par numéro ACE
 et ne montre pas le deny any any par défaut (écrit sous forme acl étendue)
+
+cette commande permet de supprimer une ace dans une acl étendue :
+Router(config)# ip access-list extended *numéro*
+Router(config-ext-nacl)# no *autre numéro*
+
+| ACL Standard          | ACL Étendue              |
+| --------------------- | ------------------------ |
+| 1 à 99 et 1300 à 1999 | 100 à 199 et 2000 à 2699 |
+ ip access-group *numéro*
+permet d'ajouter des acl
 
 submerger un hôte cible au moyen de connexions TCP semi-ouvertes est une Attaque par inondation SYN. Lors d’une attaque par inondation SYN TCP, le hacker envoie à l’hôte cible un flot continu de requêtes de session SYN TCP avec une adresse IP source usurpée. L’hôte cible répond avec un paquet TCP-SYN-ACK à chacune des requêtes de session SYN et attend un TCP ACK qui n’arrivera jamais. Finalement, la cible est submergée par des connexions TCP semi-ouvertes.
 
@@ -66,5 +84,44 @@ lorsqu’un cybercriminel fournit une passerelle non valide afin de lancer une a
 Une passerelle par défaut incorrecte utilisée pour lancer une attaque de l’homme du milieu et permettre au hacker d’intercepter des données
 Un serveur DNS incorrect en raison duquel l’utilisateur est redirigé vers un site web malveillant.
 Une adresse IP de passerelle par défaut non valide qui provoque une attaque par déni de service sur le client DHCP
+
+le terme utilisé pour décrire la garantie qu’il ne s’agit pas d’un faux message et qu’il provient réellement du propriétaire est l'authentification de l’origine
+
+la commande de configuration access-class *numéro acl* in est utile pour sécuriser l’accès administratif au routeur
+
+aujourd'hui les menaces à la sécurité du réseau Les menaces internes peuvent causer des dommages encore plus importants que les menaces externes.
+
+une attaque DoS empêche les utilisateurs légitimes d’accéder à des services réseau
+
+le type d’attaque où des informations falsifiées sont utilisées pour rediriger les utilisateurs vers des sites Internet malveillants est l'empoisonnement du cache DNS
+
+l'exigence de communications sécurisées est assurée par la mise en œuvre d’algorithmes de génération de hachage MD5 ou SHA est l'intégrité
+
+les mots clés que vous pouvez utiliser dans une liste de contrôle d’accès pour remplacer un masque générique, ou un couple d’adresse et de masque générique sont any et host
+
+la méthode la plus rapide pour supprimer une entrée ACE unique d’une liste de contrôle d’accès nommée est utiliser le mot clé no et le numéro de séquence de l’entrée ACE à supprimer
+
+après les commandes :
+ip access-list extended *acl*
+deny ...
+Les commandes seront ajoutées à la fin de la liste de contrôle d’accès Gestionnaires existante.
+
+le terme utilisé pour décrire les criminels contraires à l’éthique qui compromettent la sécurité de l’ordinateur et du réseau pour un gain personnel ou pour des raisons malveillantes est des pirates au chapeau noir
+
+no ip access-list 101 sert à supprimer une liste ACL configurée
+
+Les listes de contrôle d’accès entrantes sont traitées avant que les paquets soient acheminés, alors que les listes de contrôle d’accès sortantes sont traitées une fois le routage terminé.
+
+le terme utilisé pour décrire les pirates attaquant du chapeau gris qui protestent publiquement des organisations ou des gouvernements en publiant des articles, des vidéos, des fuites d’informations sensibles et en effectuant des attaques réseau est : hacktiviste
+
+l'attaque implique des acteurs de menace se positionnant entre une source et une destination dans le but de surveiller, capturer et contrôler la communication de manière transparente est : attaque d’homme-au-milieu
+
+le terme utilisé pour décrire un danger potentiel pour les actifs, les données ou les fonctionnalités réseau d’une entreprise est : menace
+
+L’administrateur réseau a une adresse IP et a besoin d’un accès pour gérer un routeur il a besoin d'un accès sur les lignes vty et d'une acl standard
+
+un algorithme asymétrique utilise une clé publique pour chiffrer les données, l'outil utilisé pour la déchiffrer est une clé privée
+
+pour sécuriser l'accès à une interface pour appliquer une ACL étendue à une interface
 
 ([[concepts à propos de l'examen de sécurité décrite dans les modules 3 à 5 du ccna 3]])
