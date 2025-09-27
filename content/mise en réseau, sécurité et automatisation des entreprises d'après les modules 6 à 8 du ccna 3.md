@@ -40,7 +40,7 @@ l'overloading (aussi appelé surcharge) modifie le numéro de port
 le NAT dynamique fonctionne avec un pool d'adresses privées pour un pool d'adresses publiques (1-à-1 temporaire)
 
 une commande nat pour tout les types de nat c'est ce genre de commande :
-ip nat inside/outside source/destination list_*numéro acl*/static_*adresse* pool_*nom*/interface_*nom* overload/*rien*
+ip nat inside/outside source/destination list_*numéro acl*/static_*adresse privée si c'est inside et pas privée si c'est outside*_ *adresse pas privée si c'est inside et privée si c'est outside* pool_*nom*/interface_*nom* overload/*rien*
 
 la commande show ip nat statistics montre l'interface d'entrée et l'interface de sortie sur un routeur
 
