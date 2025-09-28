@@ -1,5 +1,5 @@
 ---
-date: 2025-09-27
+date: 2025-09-28
 ---
 Pour que les traductions NAT fonctionnent correctement, des interfaces à la fois interne et externe doivent être configurées pour la traduction NAT sur le routeur. Avec des commandes du type :
 int *nom de l'interface*
@@ -8,15 +8,18 @@ pour n'importe quel type de nat on est obligé on est obligé de spécifier une 
 
 Il existe quatre types d’adresses dans la terminologie NAT.
 interne locale : adresse privée source (interne)
-interne globale : adresse publique source (interne) ; est utilisée par le routeur pour les paquets transmis sur Internet
-externe locale : adresse publique de destination
-externe globale : adresse privée de destination
+interne globale : adresse publique source (interne) ; est utilisée par le routeur pour les paquets transmis sur Internet et c'est celle que les autres vont voir
+externe locale : adresse privée de destination
+externe globale : adresse publique de destination
 
 Les plages d'adresses privées sont :
 - Classe A : 10.0.0.0 à 10.255.255.255 (10.0.0.0/8)
 - Classe B : 172.16.0.0 à 172.31.255.255 (172.16.0.0/12)
 - Classe C : 192.168.0.0 à 192.168.255.255 (192.168.0.0/16)
 Si une adresse ne tombe dans aucune de ces classes alors elle est publique
+
+Dans certains schéma s'il y a une adresse pas privée pour un serveur c'est donc son adresse routable et donc son adresse globale externe et pas locale externe. 
+S'il y a deux types *différents* d'adresses spécifiées dans une configuration NAT statique, c'est donc quasi toujours locale interne et globale interne
 
 l'ip de l'hôte est interne globale quand elle répond aux requêtes en utilisant l'adresse interne locale
 
@@ -52,6 +55,16 @@ la commande show ip nat translations montre avec des colonnes :
 5. (ip) externe globale
 
 deux technologies catégorisées comme infrastructures WAN privées sont MetroE et Frame Relay
+MetroE est aussi appelé WAN Ethernet
+Une ligne louée peut être une option repésentative d'une architecture WAN privée
+
+CPE : Customer Premises Equipment : Appareils et câblage aux clients qui se trouvent à la périphérie du réseau de l'entreprise en se connectent à la liaison d'un opérateur.
+
+Point de démarcation : C'est le point physique où se termine la responsabilité du fournisseur de services
+
+Équipement terminal de traitement de données : Périphériques du client qui transfèrent les données à partir du réseau d'un client ou d'un ordinateur hôte pour qu'elles soient transmises via le WAN.
+
+DCE : Périphériques plaçant les données sur la boucle locale (support physique pour l'abonné d'un fournisseur de services).
 
 WAN : wireless area network
 
@@ -88,10 +101,23 @@ Le tunneling ne garantit pas que les deux hôtes sont attribuées à un support 
 Il met un ou plusieurs protocoles VPN qui encapsulent les paquets d’origine.
 Les VPN utilisent des connexions virtuelles pour créer un réseau privé via un réseau public.
 
+la fonction de l’algorithme HMAC (Code d’authentification de message haché) dans la configuration d’un VPN IPsec est de garantir l’intégrité des messages
+
+les deux algorithmes de hachage utilisés avec IPsec AH pour garantir l’authenticité sont le SHA et MD5
+
+Les deux algorithmes sui peuvent faire partie d’une politique IPsec pour fournir le chiffrement et le hachage pour protéger le trafic intéressant sont le SHA et l'AES
+
 la fonction de l’algorithme Diffie-Hellman dans le cadre de travail IPsec est qu'il permet aux pairs d’échanger des clés partagées
+
+Le protocole servant à créer une connexion virtuelle de point à point vers un trafic de tunnel non chiffré entre les routeurs Cisco et provenant de différents types de protocole est : GRE.
+IPsec peut l'encapsuler
+
+deux terminaux qui peuvent être de l’autre côté d’un VPN de site à site ASA configuré à l’aide d’ASDM sont : un routeur ISR et un autre ASA
+
+Le type de VPN prend en charge plusieurs sites en appliquant des configurations aux interfaces virtuelles plutôt qu’aux interfaces physiques est Interface de tunnel virtuel IPSec
 
 deux services d’infrastructure WAN qui sont des exemples de connexions privées : Frame Relay (parce qu'il est géré par l'opérateur) et T1/E1
 
-
+si on fait la commande show ip nat statistics on peut avoir des stats et si il y a zéro en paquets transmis, on peut dire que les informations ne sont pas suffisantes pour savoir si n'importe quel type de NAT fonctionne
 
 ([[mise en réseau, sécurité et automatisation des entreprises d'après les modules 6 à 8 du ccna 3]])
