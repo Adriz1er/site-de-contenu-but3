@@ -22,7 +22,7 @@ Généralement une liste de contrôle d’accès standard est généralement pla
 
 Une liste de contrôle d’accès étendue sert à filtrer les adresses d’hôte source et de destination spécifiques. Généralement, le meilleur emplacement pour une liste de contrôle d’accès étendue est le plus proche de la source, c'est à dire la première interface de routeur qui utilise le paquet.
 
-Le type d’ACL étendue offre une grande flexibilité et un meilleur contrôle sur l’accès au réseau. Les listes d’accès standard filtrent uniquement l’adresse IP source et la direction in ou out. les acl étendues filtrent :
+Le type d’ACL étendue offre une grande flexibilité et un meilleur contrôle sur l’accès au réseau. Les listes d’accès standard filtrent uniquement l’adresse IP source (pas les ports) et la direction in ou out. les acl étendues filtrent :
 - Adresse IP source et adresse IP de destination.
 - Le protocole (TCP, UDP, ICMP, etc.).
 - Les ports source et de destination (par exemple, bloquer le port 80 pour le trafic web ou le port 22 pour le trafic SSH).
@@ -71,14 +71,18 @@ et ne montre pas le deny any any par défaut (écrit sous forme acl étendue)
 cette commande permet de supprimer une ace dans une acl étendue :
 Router(config)# ip access-list extended *numéro*
 Router(config-ext-nacl)# no *autre numéro*
+La commande **ip access-group** est utilisée pour appliquer une liste de contrôle d'accès (ACL) à une interface d'un routeur.
 
 | ACL Standard          | ACL Étendue              |
 | --------------------- | ------------------------ |
 | 1 à 99 et 1300 à 1999 | 100 à 199 et 2000 à 2699 |
  ip access-group *numéro*
 permet d'ajouter des acl
+la meilleure pratique lors de la configuration des ACL sur des lignes vty est de placer des restrictions identiques sur toutes les lignes vty.
 
 submerger un hôte cible au moyen de connexions TCP semi-ouvertes est une Attaque par inondation SYN. Lors d’une attaque par inondation SYN TCP, le hacker envoie à l’hôte cible un flot continu de requêtes de session SYN TCP avec une adresse IP source usurpée. L’hôte cible répond avec un paquet TCP-SYN-ACK à chacune des requêtes de session SYN et attend un TCP ACK qui n’arrivera jamais. Finalement, la cible est submergée par des connexions TCP semi-ouvertes.
+
+Les paquets Telnet utilisent le protocole TCP
 
 lorsqu’un cybercriminel fournit une passerelle non valide afin de lancer une attaque de l’homme du milieu, il attaque le protocole DHCP. Un cybercriminel peut configurer un serveur DHCP pirate qui fournit un ou plusieurs des éléments suivants :
 Une passerelle par défaut incorrecte utilisée pour lancer une attaque de l’homme du milieu et permettre au hacker d’intercepter des données

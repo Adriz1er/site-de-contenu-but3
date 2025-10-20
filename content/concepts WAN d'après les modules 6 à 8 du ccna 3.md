@@ -92,6 +92,8 @@ Couche 2 MPLS VPN et Couche 3 MPLS VPN sont gérés par le fournisseur d'accès 
 
 les deux types de VPN qui sont des exemples de VPN d’accès à distance gérés par l’entreprise VPN IPsec basé sur le client et VPN SSL sans client
 
+Le type de VPN qui se connecte à l’aide de la fonctionnalité TLS (Transport Layer Security) est le VPN SSL
+
 un VPN site à site nécessite une passerelle VPN à chaque extrémité du tunnel pour chiffrer et déchiffrer le trafic. Il ne nécessite pas de logiciel, ce serait pour un VPN d'accès à distance. 
 Le vpn site à site est géré par la passerelle. Il faut que la passerelle puisse chiffrer et déchiffre le trafic.
 le VPN de site à site n'est pas idéalement adapté à une utilisation par des travailleurs mobiles, le type de VPN idéalement adapté aux travailleurs mobiles est le VPN d'accès à distance (Remote Access VPN).
@@ -119,5 +121,9 @@ Le type de VPN prend en charge plusieurs sites en appliquant des configurations 
 deux services d’infrastructure WAN qui sont des exemples de connexions privées : Frame Relay (parce qu'il est géré par l'opérateur) et T1/E1
 
 si on fait la commande show ip nat statistics on peut avoir des stats et si il y a zéro en paquets transmis, on peut dire que les informations ne sont pas suffisantes pour savoir si n'importe quel type de NAT fonctionne
+Si il y a des paquets qui passent on peut considérer que ça fonctionne (sauf si indication contraire évidemment)
+Les acl en sorties sont utilisées (refCount est un compteur interne pour le routeur)
+Si dans total translations il y a au moins une adresse statique et au moins une adresse dynamique, il y a alors deux types de nat utilisés.
+Nous ne pouvons pas déterminer à partir de cette sortie si d'autres ports (non listés) sont exclus.
 
-([[mise en réseau, sécurité et automatisation des entreprises d'après les modules 6 à 8 du ccna 3]])
+([[concepts WAN d'après les modules 6 à 8 du ccna 3]])
